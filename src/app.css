@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+#app {
+  min-height: 100vh;
+  @apply bg-slate-100 text-slate-800 transition dark:bg-slate-800 dark:text-slate-100;
+}
+
+* {
+  @apply text-slate-800 dark:text-slate-100;
+}
