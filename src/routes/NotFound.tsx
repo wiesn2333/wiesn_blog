@@ -6,10 +6,10 @@ function NotFound() {
     <>
       <Header />
       <Container>
-        <div className="mt-10 text-center">
+        <article className="mt-10 text-center">
           <h1 className="text-2xl font-bold">404 - Not Found</h1>
-          <p className="mt-4 text-gray-600">你来到了没有信息的荒原</p>
-        </div>
+          <p className="mt-4">你来到了没有信息的荒原</p>
+        </article>
       </Container>
     </>
   );
