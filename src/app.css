@@ -1,58 +1,81 @@
 @import "tailwindcss";
 
-:root {
-  @apply bg-slate-100 transition dark:bg-slate-800;
+@layer app,article;
+
+@layer app {
+  :root {
+    @apply bg-slate-100 transition dark:bg-slate-800;
+  }
+
+  #app {
+    min-height: 100vh;
+    @apply bg-slate-100 transition dark:bg-slate-800;
+
+    font-family:
+      Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC",
+      "Noto Sans", "Noto Sans CJK SC", "Microsoft YaHei", "WenQuanYi Micro Hei";
+  }
+
+  ::selection {
+    @apply bg-blue-300/40 dark:bg-green-600/60;
+  }
 }
 
-#app {
-  min-height: 100vh;
-  @apply bg-slate-100 transition dark:bg-slate-800;
-}
-
-article {
-  * {
-    @apply text-slate-800 dark:text-slate-300;
-  }
-  h1 {
-    @apply mt-8 mb-4 text-[1.8rem] font-bold text-slate-950 dark:text-slate-100;
-  }
-  h1:first-child{
-    @apply mt-2;
-  }
-  h2 {
-    @apply text-slate-900 dark:text-slate-200 mt-6 mb-4 text-[1.4rem] font-bold;
-  }
-  h3 {
-    @apply mt-3 mb-3 text-[1.25rem] font-bold;
-  }
-  h4 {
-    @apply mt-2 mb-2 text-lg font-bold;
-  }
-  h5 {
-    @apply mt-2 mb-2 text-base font-bold;
-  }
-  h6 {
-    @apply mt-2 mb-2 text-sm font-bold;
-  }
-  p {
-    @apply mb-3 leading-8;
-  }
-
-  li {
-    @apply leading-7;
-  }
-
-  ul > li {
-    @apply ms-4;
-    list-style-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="5 3 14 14" fill="oklch(0.279 0.041 260.031)"><path id="arrow" d="M14 12L10 16V8L14 12Z"></path></svg>');
-    @media (prefers-color-scheme: dark) {
-      list-style-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="5 3 14 14" fill="oklch(0.968 0.007 247.896)"><path id="arrow" d="M14 12L10 16V8L14 12Z"></path></svg>');
+@layer article {
+  article {
+    * {
+      @apply text-slate-800 dark:text-slate-300;
     }
-  }
+    h1 {
+      @apply mt-8 mb-4 text-[1.8rem] font-bold text-slate-950 dark:text-slate-100;
+    }
+    h1:first-child {
+      @apply mt-2;
+    }
+    h2 {
+      @apply mt-6 mb-4 text-[1.4rem] font-bold text-slate-900 dark:text-slate-200;
+    }
+    h3 {
+      @apply mt-3 mb-3 text-[1.25rem] font-bold;
+    }
+    h4 {
+      @apply mt-2 mb-2 text-lg font-bold;
+    }
+    h5 {
+      @apply mt-2 mb-2 text-base font-bold;
+    }
+    h6 {
+      @apply mt-2 mb-2 text-sm font-bold;
+    }
+    p {
+      @apply mb-3 px-4 leading-8;
+    }
 
-  ol > li {
-    @apply ms-4 list-decimal;
-  }
+    li {
+      @apply leading-7;
+    }
 
-  @apply pb-4;
+    ul > li {
+      @apply ms-4;
+      list-style: disc;
+    }
+
+    ol > li {
+      @apply ms-4 list-decimal;
+    }
+
+    blockquote {
+      @apply mb-3 rounded-md border-b-2 border-slate-400/60 bg-slate-400/20 px-4 py-2;
+    }
+
+    code {
+      @apply mt-2 mb-3 block rounded-md border-b-2 border-slate-400/60 bg-slate-400/20 px-4 py-2 text-wrap;
+    }
+
+    a {
+      @apply text-green-600 underline underline-offset-4 transition hover:bg-slate-400/25 dark:text-green-400;
+    }
+
+    @apply pb-2;
+  }
 }
