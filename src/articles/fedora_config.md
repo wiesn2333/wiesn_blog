@@ -1,13 +1,8 @@
 ---
 title: 给我的笔记本电脑配置 Fedora
-description: 最好用的 Linux 生产力环境是安装双系统
+description: 最后还是装了双系统
 date: 2025-4-11
 ---
-
-# 为什么要换 Linux
-
-1. 喜欢折腾
-2. 笔记本在 Windows 下息屏休眠时容易睡死过去，要长按电源键重启
 
 # 换源
 
@@ -48,19 +43,9 @@ Clipboard Indicator ：剪切板历史
 
 AppIndicator and KStatusNotifierItem Support ：托盘图标
 
-Customize IBus ：可以给输入法配置皮肤
-
 Dash to Dock ：Dock栏
 
-Just Perfection ：Gnome界面微调
-
-Blur my Shell ：界面模糊效果
-
 # 美化
-
-**输入法皮肤**
-
-从 [IBus 主题集合](https://github.com/openSUSE/IBus-Theme-Hub/blob/main/README_CN.md)下载，用上面提到的扩展安装，会css的可以自己修改
 
 **Gtk主题**
 
