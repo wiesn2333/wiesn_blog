@@ -1,8 +1,9 @@
 import { ErrorBoundary, LocationProvider, Route, Router } from "preact-iso";
-import Article from "./routes/Article";
 import Home from "./routes/Home";
-import NotFound from "./routes/NotFound";
+import Article from "./routes/Article";
+import Project from "./routes/Project";
 import About from "./routes/About";
+import NotFound from "./routes/NotFound";
 import "./app.css";
 
 export function App() {
@@ -13,7 +14,8 @@ export function App() {
           <Route path="/" component={Home} />
           <Route path="/article/:article" component={Article} />
           <Route path="/about" component={About} />
-          <Route path="/Notfound" component={NotFound} />
+          <Route path="/project" component={Project} />
+          <Route path="/notfound" component={NotFound} />
           <Route default component={NotFound} />
         </Router>
       </ErrorBoundary>

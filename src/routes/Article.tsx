@@ -9,7 +9,7 @@ function Article() {
   const article = articles.find((a) => a.fileName === articleParam);
 
   if (!article) {
-    useLocation().route("/Notfound", true);
+    useLocation().route("/notfound", true);
     return null;
   }
 
@@ -17,18 +17,23 @@ function Article() {
   const { title, description, date } = article.attributes;
   return (
     <>
-      <Header articleTitle={title} />
+      <Header />
       <Container>
-        <ul className="text-slate-800 dark:text-slate-200">
-          <li className="mb-2 text-3xl font-bold">{title}</li>
-          <li className="text-md font-medium">{description}</li>
-          <li className="text-right">
-            <span className="h-4 rounded-lg bg-slate-200 px-2 pb-0.5 text-slate-500 dark:bg-slate-500 dark:text-slate-300">
-              <span className="text-sm leading-4">{date}</span>
-            </span>
-          </li>
-        </ul>
-        <div className="group flow my-4 flex-row rounded-lg bg-white p-4 shadow-md shadow-slate-400/20 md:px-8 dark:bg-slate-700 dark:shadow-slate-800/20">
+        <div className="group flow my-4 rounded-sm bg-slate-100 border-zinc-500/30 hover:border-slate-500/75 border-1 p-4 hover:shadow-[6px_6px] shadow-slate-400/20 transition dark:bg-slate-700 dark:shadow-slate-700/50">
+          <div>
+            <h1 className="inline text-xl font-semibold text-slate-700 dark:text-slate-200">
+              {title}
+            </h1>
+            <p className="my-4 text-slate-500 dark:text-slate-300">{description}</p>
+            <div className="flex justify-between">
+              <div>{/* TODO: Add author name */}</div>
+              <span className="font-mono text-sm leading-4 text-slate-500 dark:text-slate-300">
+                {date}
+              </span>
+            </div>
+          </div>
+        </div>
+        <div className="group flow my-4 rounded-sm bg-slate-100 border-zinc-500/30 hover:border-slate-500/75 border-1 p-4 hover:shadow-[6px_6px] shadow-slate-400/20 transition dark:bg-slate-700 dark:shadow-slate-700/50">
           <article>
             <ArticleContent />
           </article>

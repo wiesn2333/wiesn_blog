@@ -4,16 +4,17 @@
 
 @layer app {
   :root {
-    @apply bg-slate-100 transition dark:bg-slate-800;
+    /*@apply bg-slate-50 transition dark:bg-slate-800;*/
+    overscroll-behavior: none;
   }
 
   #app {
     min-height: 100vh;
-    @apply bg-slate-100 transition dark:bg-slate-800;
+    /*@apply bg-slate-50 transition dark:bg-slate-800;*/
 
     font-family:
-      Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC",
-      "Noto Sans", "Noto Sans CJK SC", "Microsoft YaHei", "WenQuanYi Micro Hei";
+      "Noto Serif CJK SC", "Source Han Serif SC", "SimSun", "STSong", "宋体",
+      "Noto Serif", "DejaVu Serif", "Liberation Serif", serif;
   }
 
   ::selection {
@@ -77,5 +78,16 @@
     }
 
     @apply pb-2;
+  }
+}
+
+body {
+  background-image: radial-gradient(#cad5e2 1px, #f8fafc 1px);
+  background-size: 16px 16px;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-image: radial-gradient(#334155 1px, #1e293b 1px);
   }
 }
