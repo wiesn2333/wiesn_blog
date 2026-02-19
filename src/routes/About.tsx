@@ -12,7 +12,7 @@ function About() {
               关于维森
             </h1>
             <p className="my-4 text-slate-500 dark:text-slate-300">
-              废物大学生，啥的不会,一事无成
+              废物大学生，啥都不会,一事无成
             </p>
             <p className="my-4 text-slate-500 dark:text-slate-300">😭</p>
           </article>
