@@ -1,0 +1,13 @@
+{
+  "name": "wiesn_blog",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+  "containerUser": "dev",
+  "remoteUser": "dev",
+  "mounts": [
+    "source=${localEnv:HOME}/.ssh,target=/home/dev/.ssh,type=bind,consistency=cached",
+  ],
+  "forwardPorts": [4000],
+}
