@@ -1,4 +1,11 @@
-import { render } from 'preact'
-import { App } from './app.tsx'
+import { prerender as ssr, hydrate } from "preact-iso";
+import { App } from "./app.tsx";
+import type { ContainerNode } from "preact";
 
-render(<App />, document.getElementById('app')!)
+if (typeof window !== "undefined") {
+  hydrate(<App />, document.getElementById("app") as ContainerNode);
+}
+
+export async function prerender() {
+  return await ssr(<App />);
+}

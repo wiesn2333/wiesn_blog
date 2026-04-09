@@ -6,5 +6,15 @@ import { plugin as markdown, Mode } from "vite-plugin-markdown";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [preact(), tailwindcss(), markdown({ mode: [Mode.REACT] }), svgr()],
+  plugins: [
+    preact({
+      prerender: {
+        enabled: true,
+        renderTarget: "#app",
+      },
+    }),
+    tailwindcss(),
+    markdown({ mode: [Mode.REACT] }),
+    svgr(),
+  ],
 });
