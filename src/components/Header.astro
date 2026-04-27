@@ -1,0 +1,30 @@
+---
+import Logo from "../assets/bookshelf.svg";
+---
+
+<div class="h-[57px]"></div>
+  <header class="fixed top-0 z-50 h-[57px] w-full border-b default-border-color bg-cream-50/95 dark:bg-offgray-900/95 backdrop-blur-sm transition">
+  <div class="mx-[5%] flex h-[57px] items-center justify-between text-offgray-800 md:mx-[15%] 2xl:mx-[25%] dark:text-offgray-100">
+    <a
+      href="/"
+      class="flex items-center gap-2 rounded-sm px-3 py-2 font-plex-serif text-lg font-medium tracking-wide transition hover:bg-accent-blue-100 hover:text-accent-blue dark:hover:bg-accent-blue-900/30 dark:hover:text-accent-blue-300 fv-style"
+    >
+      <img src={Logo.src} class="hidden h-5 w-5 md:inline dark:brightness-0 dark:invert" />
+      <span>Bookshelf</span>
+    </a>
+    <nav class="flex items-center gap-1">
+      <a
+        class="rounded-sm px-3 py-2 font-plex-serif text-sm font-medium tracking-tight transition hover:bg-accent-blue-100 hover:text-accent-blue dark:hover:bg-accent-blue-900/30 dark:hover:text-accent-blue-300 fv-style"
+        href="/project"
+      >
+        Project
+      </a>
+      <a
+        class="rounded-sm px-3 py-2 font-plex-serif text-sm font-medium tracking-tight transition hover:bg-accent-blue-100 hover:text-accent-blue dark:hover:bg-accent-blue-900/30 dark:hover:text-accent-blue-300 fv-style"
+        href="/about"
+      >
+        About
+      </a>
+    </nav>
+  </div>
+</header>

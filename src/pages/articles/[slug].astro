@@ -1,0 +1,51 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import TagBadge from "../../components/TagBadge.astro";
+
+export async function getStaticPaths() {
+  const articles = await getCollection("articles");
+  return articles.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await article.render();
+const { title, description, date, category } = article.data;
+---
+
+<Layout title={title + " — Wiesn's bookshelf"}>
+  <Header />
+  <main class="relative isolate overflow-clip size-full">
+    <section class="relative w-full py-8 lg:pt-12 lg:pb-8">
+      <div class="mx-auto max-w-2xl px-4 lg:px-8">
+        <div class="flex items-center gap-2">
+          <a href="/" class="text-sm text-offgray-500 transition hover:text-accent-blue dark:text-offgray-400 dark:hover:text-accent-blue-300 fv-style rounded-sm">← Back</a>
+          {category && <TagBadge label={category} variant="blue" />}
+        </div>
+        <h1 class="mt-4 font-plex-serif text-3xl font-medium tracking-wide text-offgray-950 dark:text-offgray-50">
+          {title}
+        </h1>
+        <p class="mt-2 text-sm tracking-tight text-offgray-500 dark:text-offgray-400">
+          {description}
+        </p>
+        <time class="mt-3 block font-mono text-[0.625rem] text-offgray-600 dark:text-offgray-500">
+          {date}
+        </time>
+      </div>
+    </section>
+
+    <hr class="mx-auto max-w-2xl border-offgray-200 dark:border-gray-600/40" />
+
+    <section class="relative w-full py-8 lg:py-12">
+      <div class="mx-auto max-w-2xl px-4 lg:px-8">
+        <article>
+          <Content />
+        </article>
+      </div>
+    </section>
+  </main>
+</Layout>

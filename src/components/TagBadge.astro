@@ -1,0 +1,16 @@
+---
+interface Props {
+  label: string;
+  variant?: "featured" | "default" | "blue";
+}
+
+const { label, variant = "default" } = Astro.props;
+---
+
+<span class:list={[
+  variant === "featured" && "tag-pill-featured",
+  variant === "default" && "tag-pill-default",
+  variant === "blue" && "tag-pill-blue",
+]}>
+  {label}
+</span>

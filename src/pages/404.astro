@@ -1,0 +1,24 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+---
+
+<Layout title="404 — Wiesn's bookshelf">
+  <Header />
+  <main class="relative isolate overflow-clip size-full">
+    <section class="flex min-h-[calc(100vh-4rem)] items-center justify-center px-4">
+      <div class="text-center">
+        <p class="font-plex-serif text-[6rem] font-medium leading-none text-offgray-200 dark:text-offgray-800 md:text-[8rem]">404</p>
+        <h1 class="mt-4 font-plex-serif text-xl font-medium tracking-wide text-offgray-950 dark:text-offgray-50">
+          你来到了没有信息的荒原
+        </h1>
+        <p class="mt-2 text-sm tracking-tight text-offgray-500 dark:text-offgray-400">
+          也许这里曾经有过什么，但现在已经不在了。
+        </p>
+        <div class="mt-8 flex items-center justify-center gap-3">
+          <a href="/" class="btn-primary">← 回家</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

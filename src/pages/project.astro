@@ -1,0 +1,43 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import HatFactory from "../assets/hat_factory.svg";
+---
+
+<Layout title="Project — Wiesn's bookshelf">
+  <Header />
+  <main class="relative isolate overflow-clip size-full">
+    <Hero title="Projects" description="Things I've built and tinkered with." />
+
+    <section class="px-4 pb-12 lg:pb-16">
+      <div class="mx-auto max-w-5xl px-4 lg:px-8">
+        <a
+          href="https://github.com/wiesn2333/hat_factory"
+          class="group flex w-full cursor-pointer flex-col overflow-clip rounded-sm border border-offgray-200/60 text-inherit transition hover:border-blue-300 hover:[box-shadow:var(--sh-alt)] dark:border-gray-500/30 dark:hover:border-blue-300/50 dark:[box-shadow:hsl(218,_13%,_40%,_0.05)_0_-2px_0_0_inset]"
+        >
+          <div class="flex h-full flex-col p-3.5 bg-cream-50/60 dark:bg-offgray-900 card-shadow">
+            <div class="flex items-start gap-4">
+              <div class="shrink-0 rounded-sm border border-offgray-200 bg-white p-2 dark:border-offgray-700 dark:bg-offgray-900">
+                <img src={HatFactory.src} class="h-8 w-8 dark:invert" />
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="tag-pill-default">Preact</span>
+                  <span class="tag-pill-default">Web</span>
+                </div>
+                <h2 class="mt-1.5 font-plex-serif text-[0.9375rem] font-medium tracking-wide text-offgray-950 underline decoration-accent-blue/20 transition hover:decoration-accent-blue/80 dark:text-offgray-100 dark:decoration-blue-300/20 dark:hover:decoration-blue-400/80">
+                  帽子工厂
+                </h2>
+                <p class="mt-1 text-sm leading-6 text-offgray-500 dark:text-offgray-400">
+                  大号、中号和小号的都有
+                </p>
+              </div>
+              <span class="hidden shrink-0 self-center text-offgray-300 transition group-hover:text-accent-blue sm:block dark:text-offgray-600 dark:group-hover:text-accent-blue-300">→</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+</Layout>

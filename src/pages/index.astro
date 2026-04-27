@@ -1,0 +1,59 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+import { getCollection } from "astro:content";
+
+const articles = await getCollection("articles");
+const categories = [...new Set(articles.map((a) => a.data.category).filter(Boolean))];
+---
+
+<Layout title="Wiesn's bookshelf">
+  <Header />
+  <main class="relative isolate overflow-clip size-full">
+    <Hero title="From The Bookshelf" description="Keep up with notes and stories." />
+
+    <section class="px-4 pb-12 lg:pb-16">
+      <div class="mx-auto grid w-full max-w-5xl grid-cols-1 gap-2 md:grid-cols-6 md:gap-6">
+        <aside class="col-span-5 max-w-5xl md:col-span-1 md:order-2">
+          <nav class="py-6 md:py-10">
+            <p class="subheader pb-2.5 mb-1 border-b default-border-color md:border-b-0 md:text-right md:pr-[15px]">
+              Categories
+            </p>
+            <div class="flex overflow-x-auto text-sm md:flex-col">
+              <a
+                href="/"
+                class="p-2.5 md:px-4 md:py-1 fv-style shrink-0 text-nowrap md:text-wrap border-b md:border-b-0 md:border-r text-center md:text-right text-accent-blue bg-accent-blue/5 dark:bg-accent-blue/12 border-accent-blue/50 dark:border-blue-300/40 dark:text-blue-400"
+              >
+                All Posts
+              </a>
+              {categories.map((cat) => (
+                <a
+                  href={"/?category=" + cat}
+                  class="p-2.5 md:px-4 md:py-1 fv-style shrink-0 text-nowrap md:text-wrap border-b md:border-b-0 md:border-r text-center md:text-right hover:bg-accent-blue/10 default-border-color md:border-transparent"
+                >
+                  {cat}
+                </a>
+              ))}
+            </div>
+          </nav>
+        </aside>
+
+        <div class="col-span-5 md:col-span-5 md:order-1">
+          <div class="py-4 md:py-8 grid w-full grid-cols-1 gap-4 px-4 md:px-8">
+            {articles.map((article) => (
+              <ArticleCard
+                title={article.data.title}
+                description={article.data.description}
+                date={article.data.date}
+                slug={article.slug}
+                category={article.data.category}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

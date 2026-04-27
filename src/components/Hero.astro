@@ -1,0 +1,18 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+---
+
+<section class="relative w-full py-8 lg:pt-12 lg:pb-14">
+  <div class="mx-auto flex w-full max-w-xl flex-col items-center gap-1 px-4">
+    <h1 class="font-plex-serif text-balance scroll-mt-24 text-2xl font-medium tracking-wide text-accent-blue dark:text-blue-300 mb-2 text-center lg:text-3xl">
+      {title}
+    </h1>
+    <p class="tracking-tight text-center text-balance text-sm text-offgray-500 dark:text-offgray-400">
+      {description}
+    </p>
+  </div>
+</section>

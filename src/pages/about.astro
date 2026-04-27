@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import SnsLinks from "../components/SnsLinks.astro";
+---
+
+<Layout title="About — Wiesn's bookshelf">
+  <Header />
+  <main class="relative isolate overflow-clip size-full">
+    <Hero title="关于维森" description="一个在键盘和书本之间迷路的人" />
+
+    <section class="px-4 pb-12 lg:pb-16">
+      <div class="mx-auto max-w-lg px-4">
+        <div class="rounded-sm border border-offgray-200/60 dark:border-gray-500/30 bg-cream-50/60 dark:bg-offgray-900 p-8 card-shadow">
+          <p class="text-center tracking-tight text-offgray-600 dark:text-offgray-400">
+            废物大学生，啥都不会，一事无成
+          </p>
+          <p class="mt-4 text-center text-lg text-offgray-400 dark:text-offgray-500">😭</p>
+          <div class="mt-6 flex justify-center">
+            <SnsLinks />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

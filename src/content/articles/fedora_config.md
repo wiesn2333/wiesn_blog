@@ -2,6 +2,7 @@
 title: 给笔记本电脑配置 Fedora
 description: 最后还是装了双系统
 date: 2025-4-11
+category: Tips
 ---
 
 # 换源
