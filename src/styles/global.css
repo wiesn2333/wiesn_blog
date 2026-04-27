@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+@import url("https://chinese-fonts-cdn.deno.dev/packages/sypxzs/dist/思源屏显臻宋/result.css");
 
 @tailwind base;
 @tailwind components;
@@ -23,52 +24,6 @@
 
   ::selection {
     @apply bg-blue-300/40 dark:bg-accent-blue-700/60;
-  }
-}
-
-@layer components {
-  .default-border-color {
-    @apply border-offgray-200 dark:border-gray-600/40;
-  }
-
-  .fv-style {
-    @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue;
-  }
-
-  .subheader {
-    @apply font-plex-serif text-[0.8125rem] tracking-wide uppercase text-offgray-500 dark:text-offgray-500;
-  }
-
-  .tag-pill {
-    @apply rounded-sm h-[18px] px-1 pt-px w-fit flex items-center gap-1.5 shrink-0 border font-mono text-[0.625rem] leading-6;
-  }
-
-  .tag-pill-default {
-    @apply tag-pill border-gray-300 bg-gray-100 text-gray-800 dark:border-gray-700/40 dark:bg-gray-800/20 dark:text-gray-300;
-  }
-
-  .tag-pill-blue {
-    @apply tag-pill border-blue-300 bg-blue-200/10 text-blue-800 dark:border-blue-400/15 dark:bg-blue-800/5 dark:text-blue-200;
-  }
-
-  .card-shadow {
-    box-shadow: hsl(218, 13%, 50%, 0.05) 0 -2px 0 0 inset;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .card-shadow {
-      box-shadow: hsl(218, 13%, 40%, 0.05) 0 -2px 0 0 inset;
-    }
-  }
-
-  .btn-primary {
-    @apply inline-flex items-center justify-center gap-1.5 h-9 px-4 rounded-sm text-sm font-medium tracking-tight border bg-accent-blue border-transparent text-white
-           shadow-[hsl(219,93%,30%)_0_-2px_0_0_inset,hsl(219,93%,95%)_0_1px_3px_0]
-           hover:bg-accent-blue-600 hover:shadow-none
-           active:shadow-none
-           disabled:opacity-50 disabled:cursor-not-allowed
-           dark:shadow-[hsl(219,93%,30%)_0_-2px_0_0_inset,hsl(0,0%,0%,0.4)_0_1px_3px_0]
-           dark:hover:shadow-none;
   }
 }
 

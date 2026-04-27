@@ -19,33 +19,103 @@ const { title, description, date, category } = article.data;
 
 <Layout title={title + " — Wiesn's bookshelf"}>
   <Header />
-  <main class="relative isolate overflow-clip size-full">
-    <section class="relative w-full py-8 lg:pt-12 lg:pb-8">
-      <div class="mx-auto max-w-2xl px-4 lg:px-8">
-        <div class="flex items-center gap-2">
-          <a href="/" class="text-sm text-offgray-500 transition hover:text-accent-blue dark:text-offgray-400 dark:hover:text-accent-blue-300 fv-style rounded-sm">← Back</a>
-          {category && <TagBadge label={category} variant="blue" />}
+  <main class="main">
+    <section class="title-section">
+      <div class="title-section__inner">
+        <div class="title-section__meta">
+          <a href="/" class="back-link">← Back</a>
         </div>
-        <h1 class="mt-4 font-plex-serif text-3xl font-medium tracking-wide text-offgray-950 dark:text-offgray-50">
-          {title}
-        </h1>
-        <p class="mt-2 text-sm tracking-tight text-offgray-500 dark:text-offgray-400">
-          {description}
-        </p>
-        <time class="mt-3 block font-mono text-[0.625rem] text-offgray-600 dark:text-offgray-500">
-          {date}
-        </time>
+        <h1 class="title-section__heading">{title}</h1>
+        <p class="title-section__desc">{description}</p>
+        <div class="title-section__info">
+          {category && <TagBadge label={category} variant="blue" />}
+          <time class="title-section__date">{date}</time>
+        </div>
       </div>
     </section>
 
-    <hr class="mx-auto max-w-2xl border-offgray-200 dark:border-gray-600/40" />
+    <hr class="divider" />
 
-    <section class="relative w-full py-8 lg:py-12">
-      <div class="mx-auto max-w-2xl px-4 lg:px-8">
-        <article>
+    <section class="content-section">
+      <div class="content-section__inner">
+        <article class="content-section__article">
           <Content />
         </article>
       </div>
     </section>
   </main>
 </Layout>
+
+<style>
+  .title-section {
+    position: relative;
+    width: 100%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    .title-section {
+      padding-top: 3rem;
+      padding-bottom: 2rem;
+    }
+  }
+
+  .title-section__inner {
+    @apply mx-auto max-w-2xl px-4 lg:px-8;
+  }
+
+  .title-section__meta {
+    display: flex;
+    align-items: center;
+  }
+
+  .back-link {
+    @apply text-sm text-offgray-500 transition hover:text-accent-blue dark:text-offgray-400 dark:hover:text-accent-blue-300 rounded-sm;
+  }
+
+  .title-section__heading {
+    @apply mt-4 font-plex-serif text-3xl font-medium tracking-wide text-offgray-950 dark:text-offgray-50;
+  }
+
+  .title-section__desc {
+    @apply mt-2 text-sm tracking-tight text-offgray-500 dark:text-offgray-400;
+  }
+
+  .title-section__info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .title-section__date {
+    @apply font-mono text-[0.625rem] text-offgray-600 dark:text-offgray-500;
+  }
+
+  .divider {
+    @apply mx-auto max-w-2xl border-offgray-200 dark:border-gray-600/40;
+  }
+
+  .content-section {
+    position: relative;
+    width: 100%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    .content-section {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+  }
+
+  .content-section__inner {
+    @apply mx-auto max-w-2xl px-4 lg:px-8;
+  }
+
+  .content-section__article {
+    @apply pb-2;
+  }
+</style>

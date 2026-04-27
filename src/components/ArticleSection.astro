@@ -1,0 +1,145 @@
+---
+import ArticleCard from "./ArticleCard.astro";
+
+interface Props {
+  articles: Array<{
+    data: {
+      title: string;
+      description: string;
+      date: string;
+      category?: string;
+    };
+    slug: string;
+  }>;
+  categories: string[];
+  activeCategory?: string;
+}
+
+const { articles, categories, activeCategory } = Astro.props;
+---
+
+<section class="section">
+  <div class="layout">
+    <aside class="sidebar">
+      <nav class="sidebar__nav">
+        <p class="subheader">Categories</p>
+        <div class="sidebar__links">
+          <a href="/" class:list={["category-link", !activeCategory && "category-link--active"]}>All Posts</a>
+          {categories.map((cat) => (
+            <a href={"/category/" + cat} class:list={["category-link", cat === activeCategory && "category-link--active"]}>{cat}</a>
+          ))}
+        </div>
+      </nav>
+    </aside>
+
+    <div class="content">
+      <div class="content__grid">
+        {articles.length > 0 ? articles.map((article) => (
+          <ArticleCard
+            title={article.data.title}
+            description={article.data.description}
+            date={article.data.date}
+            slug={article.slug}
+            category={article.data.category}
+          />
+        )) : (
+          <p class="empty">No articles found.</p>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 3rem;
+  }
+
+  @media (min-width: 1024px) {
+    .section {
+      padding-bottom: 4rem;
+    }
+  }
+
+  .layout {
+    @apply mx-auto grid w-full max-w-5xl grid-cols-1 gap-2 md:grid-cols-6 md:gap-6;
+  }
+
+  .sidebar {
+    @apply col-span-5 max-w-5xl md:col-span-1 md:order-2;
+  }
+
+  .sidebar__nav {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .sidebar__nav {
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
+    }
+  }
+
+  .subheader {
+    @apply font-plex-serif text-[0.8125rem] tracking-wide uppercase text-offgray-500 dark:text-offgray-500;
+    @apply border-b border-offgray-200 dark:border-gray-600/40;
+    padding-bottom: 0.625rem;
+    margin-bottom: 0.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .subheader {
+      border-bottom: none;
+      text-align: right;
+      padding-right: 15px;
+    }
+  }
+
+  .sidebar__links {
+    display: flex;
+    overflow-x: auto;
+    font-size: 0.875rem;
+  }
+
+  @media (min-width: 768px) {
+    .sidebar__links {
+      flex-direction: column;
+    }
+  }
+
+  .category-link {
+    @apply p-2.5 md:px-4 md:py-1 shrink-0 text-nowrap md:text-wrap border-b md:border-b-0 md:border-r text-center md:text-right;
+    @apply border-offgray-200 dark:border-gray-600/40 md:border-transparent;
+  }
+
+  .category-link:hover {
+    @apply bg-accent-blue/10;
+  }
+
+  .category-link--active {
+    @apply text-accent-blue dark:text-blue-400;
+    @apply border-blue-500/50 dark:border-blue-300/40;
+    background-color: hsla(219, 93%, 50%, 0.05);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .category-link--active {
+      background-color: hsla(219, 93%, 50%, 0.12);
+    }
+  }
+
+  .content {
+    @apply col-span-5 md:col-span-5 md:order-1;
+  }
+
+  .content__grid {
+    @apply py-4 md:py-8 grid w-full grid-cols-1 gap-4 px-4 md:px-8;
+  }
+
+  .empty {
+    @apply text-center text-offgray-400 dark:text-offgray-500 py-8;
+  }
+</style>

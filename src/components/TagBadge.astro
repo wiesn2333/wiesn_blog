@@ -7,10 +7,21 @@ interface Props {
 const { label, variant = "default" } = Astro.props;
 ---
 
-<span class:list={[
-  variant === "featured" && "tag-pill-featured",
-  variant === "default" && "tag-pill-default",
-  variant === "blue" && "tag-pill-blue",
-]}>
+<span class={`tag tag--${variant}`}>
   {label}
 </span>
+
+<style>
+  .tag {
+    @apply rounded-sm h-[18px] px-1 pt-px w-fit flex items-center gap-1.5 shrink-0 border font-mono text-[0.625rem] leading-6;
+  }
+  .tag--default {
+    @apply border-gray-300 bg-gray-100 text-gray-800 dark:border-gray-700/40 dark:bg-gray-800/20 dark:text-gray-300;
+  }
+  .tag--blue {
+    @apply border-blue-300 bg-blue-200/10 text-blue-800 dark:border-blue-400/15 dark:bg-blue-800/5 dark:text-blue-200;
+  }
+  .tag--featured {
+    @apply border-amber-300 bg-amber-100 text-amber-800 dark:border-amber-600/40 dark:bg-amber-900/20 dark:text-amber-200;
+  }
+</style>

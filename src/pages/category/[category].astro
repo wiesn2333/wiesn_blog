@@ -1,0 +1,29 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Hero from "../../components/Hero.astro";
+import ArticleSection from "../../components/ArticleSection.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const articles = await getCollection("articles");
+  const categories = [...new Set(articles.map((a) => a.data.category).filter(Boolean))];
+  return categories.map((cat) => ({
+    params: { category: cat },
+    props: { category: cat },
+  }));
+}
+
+const { category } = Astro.props;
+const articles = await getCollection("articles");
+const categories = [...new Set(articles.map((a) => a.data.category).filter(Boolean))];
+const filtered = articles.filter((a) => a.data.category === category);
+---
+
+<Layout title={category + " — Wiesn's bookshelf"}>
+  <Header />
+  <main class="main">
+    <Hero title={category} description={`Articles in "${category}"`} />
+    <ArticleSection articles={filtered} {categories} activeCategory={category} />
+  </main>
+</Layout>

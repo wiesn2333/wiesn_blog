@@ -2,29 +2,64 @@
 import Logo from "../assets/bookshelf.svg";
 ---
 
-<div class="h-[57px]"></div>
-  <header class="fixed top-0 z-50 h-[57px] w-full border-b default-border-color bg-cream-50/95 dark:bg-offgray-900/95 backdrop-blur-sm transition">
-  <div class="mx-[5%] flex h-[57px] items-center justify-between text-offgray-800 md:mx-[15%] 2xl:mx-[25%] dark:text-offgray-100">
-    <a
-      href="/"
-      class="flex items-center gap-2 rounded-sm px-3 py-2 font-plex-serif text-lg font-medium tracking-wide transition hover:bg-accent-blue-100 hover:text-accent-blue dark:hover:bg-accent-blue-900/30 dark:hover:text-accent-blue-300 fv-style"
-    >
-      <img src={Logo.src} class="hidden h-5 w-5 md:inline dark:brightness-0 dark:invert" />
+<div class="spacer"></div>
+<header class="header">
+  <div class="header__inner">
+    <a href="/" class="header__logo">
+      <img src={Logo.src} class="header__logo-icon" />
       <span>Bookshelf</span>
     </a>
-    <nav class="flex items-center gap-1">
-      <a
-        class="rounded-sm px-3 py-2 font-plex-serif text-sm font-medium tracking-tight transition hover:bg-accent-blue-100 hover:text-accent-blue dark:hover:bg-accent-blue-900/30 dark:hover:text-accent-blue-300 fv-style"
-        href="/project"
-      >
-        Project
-      </a>
-      <a
-        class="rounded-sm px-3 py-2 font-plex-serif text-sm font-medium tracking-tight transition hover:bg-accent-blue-100 hover:text-accent-blue dark:hover:bg-accent-blue-900/30 dark:hover:text-accent-blue-300 fv-style"
-        href="/about"
-      >
-        About
-      </a>
+    <nav class="header__nav">
+      <a class="header__nav-link" href="/project">Project</a>
+      <a class="header__nav-link" href="/about">About</a>
     </nav>
   </div>
 </header>
+
+<style>
+  .spacer {
+    height: 57px;
+  }
+
+  .header {
+    @apply fixed top-0 z-50 h-[57px] w-full border-b bg-cream-50/95 dark:bg-offgray-900/95 backdrop-blur-sm;
+    @apply border-offgray-200 dark:border-gray-600/40;
+    transition: background-color 0.15s;
+  }
+
+  .header__inner {
+    @apply mx-[5%] flex h-[57px] items-center justify-between text-offgray-800 md:mx-[15%] 2xl:mx-[25%] dark:text-offgray-100;
+  }
+
+  .header__logo {
+    @apply flex items-center gap-2 rounded-sm px-3 py-2 font-plex-serif text-lg font-medium tracking-wide transition hover:bg-accent-blue-100 hover:text-accent-blue dark:hover:bg-accent-blue-900/30 dark:hover:text-accent-blue-300;
+  }
+
+  .header__logo-icon {
+    height: 1.25rem;
+    width: 1.25rem;
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .header__logo-icon {
+      display: inline;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .header__logo-icon {
+      @apply brightness-0 invert;
+    }
+  }
+
+  .header__nav {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .header__nav-link {
+    @apply rounded-sm px-3 py-2 font-plex-serif text-sm font-medium tracking-tight transition hover:bg-accent-blue-100 hover:text-accent-blue dark:hover:bg-accent-blue-900/30 dark:hover:text-accent-blue-300;
+  }
+</style>

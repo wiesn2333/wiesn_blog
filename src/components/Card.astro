@@ -1,0 +1,56 @@
+---
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<a href={href} class="card">
+  <div class="card__body">
+    <slot />
+  </div>
+</a>
+
+<style>
+  .card {
+    @apply flex w-full flex-col overflow-clip rounded-sm border text-inherit transition;
+    @apply border-offgray-200/60 hover:border-blue-300 dark:border-gray-500/30 dark:hover:border-blue-300/50;
+    cursor: pointer;
+  }
+
+  .card:hover {
+    box-shadow: var(--sh-alt);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .card {
+      box-shadow: hsl(218, 13%, 40%, 0.05) 0 -2px 0 0 inset;
+    }
+  }
+
+  .card__body {
+    @apply flex h-full flex-col p-3.5 bg-cream-50/60 dark:bg-offgray-900;
+    box-shadow: hsl(218, 13%, 50%, 0.05) 0 -2px 0 0 inset;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .card__body {
+      box-shadow: hsl(218, 13%, 40%, 0.05) 0 -2px 0 0 inset;
+    }
+  }
+</style>
+
+<style is:global>
+  .card__tag {
+    @apply rounded-sm h-[18px] px-1 pt-px w-fit flex items-center gap-1.5 shrink-0 border font-mono text-[0.625rem] leading-6 border-gray-300 bg-gray-100 text-gray-800 dark:border-gray-700/40 dark:bg-gray-800/20 dark:text-gray-300;
+  }
+
+  .card__title {
+    @apply mt-1.5 font-plex-serif text-[0.9375rem] font-medium tracking-wide text-offgray-950 underline decoration-accent-blue/20 transition hover:decoration-accent-blue/80 dark:text-offgray-100 dark:decoration-blue-300/20 dark:hover:decoration-blue-400/80;
+  }
+
+  .card__desc {
+    @apply mt-1 text-sm leading-6 text-offgray-500 dark:text-offgray-400;
+  }
+</style>

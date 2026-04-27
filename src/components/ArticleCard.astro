@@ -1,4 +1,6 @@
 ---
+import Card from "./Card.astro";
+
 interface Props {
   title: string;
   description: string;
@@ -9,26 +11,30 @@ interface Props {
 const { title, description, date, slug, category } = Astro.props;
 ---
 
-<a
-  href={"/articles/" + slug}
-  class="group flex w-full cursor-pointer flex-col overflow-clip rounded-sm border border-offgray-200/60 text-inherit transition hover:border-blue-300 hover:[box-shadow:var(--sh-alt)] dark:border-gray-500/30 dark:hover:border-blue-300/50 dark:[box-shadow:hsl(218,_13%,_40%,_0.05)_0_-2px_0_0_inset]"
->
-  <div class="flex h-full flex-col p-3.5 bg-cream-50/60 dark:bg-offgray-900 card-shadow">
-    <div class="flex items-start gap-2">
-      {category && (
-        <span class="tag-pill-default shrink-0">{category}</span>
-      )}
-    </div>
-    <h2 class="mt-1.5 font-plex-serif text-[0.9375rem] font-medium tracking-wide text-offgray-950 underline decoration-accent-blue/20 transition hover:decoration-accent-blue/80 dark:text-offgray-100 dark:decoration-blue-300/20 dark:hover:decoration-blue-400/80">
-      {title}
-    </h2>
-    <p class="mt-1 text-sm leading-6 text-offgray-500 line-clamp-2 dark:text-offgray-400">
-      {description}
-    </p>
-    <div class="mt-auto flex pt-2">
-      <time class="ml-auto font-mono text-[0.625rem] text-offgray-600 dark:text-offgray-500">
-        {date}
-      </time>
-    </div>
+<Card href={"/articles/" + slug}>
+  {category && <span class="card__tag">{category}</span>}
+  <h2 class="card__title">{title}</h2>
+  <p class="card__desc">{description}</p>
+  <div class="card__footer">
+    <time class="card__date">{date}</time>
   </div>
-</a>
+</Card>
+
+<style>
+  .card__desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card__footer {
+    margin-top: auto;
+    display: flex;
+    padding-top: 0.5rem;
+  }
+
+  .card__date {
+    @apply ml-auto font-mono text-[0.625rem] text-offgray-600 dark:text-offgray-500;
+  }
+</style>

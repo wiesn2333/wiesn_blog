@@ -6,13 +6,37 @@ interface Props {
 const { title, description } = Astro.props;
 ---
 
-<section class="relative w-full py-8 lg:pt-12 lg:pb-14">
-  <div class="mx-auto flex w-full max-w-xl flex-col items-center gap-1 px-4">
-    <h1 class="font-plex-serif text-balance scroll-mt-24 text-2xl font-medium tracking-wide text-accent-blue dark:text-blue-300 mb-2 text-center lg:text-3xl">
-      {title}
-    </h1>
-    <p class="tracking-tight text-center text-balance text-sm text-offgray-500 dark:text-offgray-400">
-      {description}
-    </p>
+<section class="hero">
+  <div class="hero__inner">
+    <h1 class="hero__title">{title}</h1>
+    <p class="hero__desc">{description}</p>
   </div>
 </section>
+
+<style>
+  .hero {
+    position: relative;
+    width: 100%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    .hero {
+      padding-top: 3rem;
+      padding-bottom: 3.5rem;
+    }
+  }
+
+  .hero__inner {
+    @apply mx-auto flex w-full max-w-xl flex-col items-center gap-1 px-4;
+  }
+
+  .hero__title {
+    @apply font-plex-serif text-balance scroll-mt-24 text-2xl font-medium tracking-wide text-accent-blue dark:text-blue-300 mb-2 text-center lg:text-3xl;
+  }
+
+  .hero__desc {
+    @apply tracking-tight text-center text-balance text-sm text-offgray-500 dark:text-offgray-400;
+  }
+</style>

@@ -4,26 +4,51 @@ import BiliBili from "../assets/bilibili.svg";
 import Twitter from "../assets/twitter-x.svg";
 ---
 
-<div class="flex items-center gap-3">
+<div class="social-links">
   <a
     href="https://twitter.com/weisn2333"
-    class="rounded-sm p-2 text-offgray-400 transition hover:bg-offgray-200/50 hover:text-accent-blue dark:hover:bg-offgray-800 dark:hover:text-accent-blue-300 fv-style"
+    class="social-link"
     aria-label="Twitter"
   >
-    <img src={Twitter.src} class="h-5 w-5 dark:brightness-0 dark:invert" />
+    <img src={Twitter.src} class="social-icon" />
   </a>
   <a
     href="https://github.com/wiesn2333"
-    class="rounded-sm p-2 text-offgray-400 transition hover:bg-offgray-200/50 hover:text-accent-blue dark:hover:bg-offgray-800 dark:hover:text-accent-blue-300 fv-style"
+    class="social-link"
     aria-label="GitHub"
   >
-    <img src={Github.src} class="h-5 w-5 dark:brightness-0 dark:invert" />
+    <img src={Github.src} class="social-icon" />
   </a>
   <a
     href="https://space.bilibili.com/37298661/"
-    class="rounded-sm p-2 transition hover:bg-pink-100 hover:text-pink-500 dark:hover:bg-pink-900/30 dark:hover:text-pink-400 fv-style"
+    class="social-link social-link--bilibili"
     aria-label="Bilibili"
   >
-    <img src={BiliBili.src} class="h-5 w-5" />
+    <img src={BiliBili.src} class="social-icon" />
   </a>
 </div>
+
+<style>
+  .social-links {
+    @apply flex items-center gap-3;
+  }
+
+  .social-link {
+    @apply rounded-sm p-2 text-offgray-400 transition hover:bg-offgray-200/50 hover:text-accent-blue dark:hover:bg-offgray-800 dark:hover:text-accent-blue-300;
+  }
+
+  .social-link--bilibili {
+    @apply hover:bg-pink-100 hover:text-pink-500 dark:hover:bg-pink-900/30 dark:hover:text-pink-400;
+  }
+
+  .social-icon {
+    height: 1.25rem;
+    width: 1.25rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .social-icon {
+      @apply brightness-0 invert;
+    }
+  }
+</style>
