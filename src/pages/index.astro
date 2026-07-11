@@ -1,18 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
-import ArticleSection from "../components/ArticleSection.astro";
+import ArticleList from "../components/ArticleList.astro";
 import { getCollection } from "astro:content";
 
-const articles = await getCollection("articles");
-const categories = [...new Set(articles.map((a) => a.data.category).filter(Boolean))];
+const articles = (await getCollection("articles")).map((article_data) => ({
+    data: article_data.data,
+    link: "article/" + article_data.id,
+}));
 ---
 
-<Layout title="Wiesn's bookshelf">
-  <Header />
-  <main class="main">
-    <Hero title="From The Bookshelf" description="Keep up with notes and stories." />
-    <ArticleSection {articles} {categories} />
-  </main>
+<Layout title="Wiesn's Bookshelf">
+    <Hero
+        title="From The Bookshelf"
+        description="Keep up with notes and stories."
+    />
+    <ArticleList articles={articles} />
 </Layout>

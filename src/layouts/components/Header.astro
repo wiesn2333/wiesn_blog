@@ -1,0 +1,60 @@
+<header>
+    <a class="title" href="/" >The Bookshelf</a>
+    <div style="flex: 1;"></div>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/project">Project</a>
+        <a href="/about">About</a>
+    </nav>
+</header>
+
+<style>
+    header {
+        user-select: none;
+        font-family:
+            Noto Serif,
+            Noto Serif SC,
+            SimSun,
+            serif;
+
+        padding-inline: var(--page-padding);
+        height: 54px;
+        position: sticky;
+        top: 0;
+
+        display: flex;
+        align-items: center;
+
+        backdrop-filter: blur(32px);
+        border-bottom: 1px solid var(--shadow-color);
+    }
+
+    .title {
+        all: unset;
+        font-size: 1.25rem;
+        white-space: nowrap;
+
+        padding: 5px 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .title:hover {
+        cursor: pointer;
+        background-color: var(--shadow-color);
+    }
+
+    nav a {
+        color: unset;
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        margin: 0 3px;
+        padding: 5px 10px;
+        border-radius: 3px;
+    }
+
+    nav a:hover {
+        background-color: var(--shadow-color);
+    }
+</style>

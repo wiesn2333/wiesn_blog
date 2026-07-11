@@ -1,112 +1,38 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
-import Card from "../components/Card.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 import HatFactory from "../assets/hat_factory.svg";
 ---
 
-<Layout title="Project — Wiesn's bookshelf">
-  <Header />
-  <main class="main">
-    <Hero title="Projects" description="Things I've built and tinkered with." />
+<Layout title="Wiesn's Projects">
+  <Hero title="Projects" description="Things I've built and tinkered with." />
 
-    <section class="section">
-      <div class="section__inner">
-        <Card href="https://github.com/wiesn2333/hat_factory">
-          <div class="card__row">
-            <div class="card__icon">
-              <img src={HatFactory.src} class="card__icon-img" />
-            </div>
-            <div class="card__content">
-              <div class="card__tags">
-                <span class="card__tag">Preact</span>
-                <span class="card__tag">Web</span>
-              </div>
-              <h2 class="card__title">帽子工厂</h2>
-              <p class="card__desc">大号、中号和小号的都有</p>
-            </div>
-            <span class="card__arrow">→</span>
-          </div>
-        </Card>
-      </div>
-    </section>
-  </main>
+  <section class="section">
+    <div class="project-list">
+      <ProjectCard
+        href="https://github.com/wiesn2333/hat_factory"
+        icon={HatFactory.src}
+        title="帽子工厂"
+        description="大号、中号和小号的都有"
+        tags={["Preact", "Web"]}
+      />
+    </div>
+  </section>
 </Layout>
 
 <style>
   .section {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-bottom: 3rem;
+    padding: 0 1rem 3rem;
   }
-
   @media (min-width: 1024px) {
     .section {
       padding-bottom: 4rem;
     }
   }
-
-  .section__inner {
-    @apply mx-auto max-w-5xl px-4 lg:px-8;
-  }
-
-  .card__row {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  .card__icon {
-    @apply shrink-0 rounded-sm border p-2 bg-white border-offgray-200 dark:bg-offgray-900 dark:border-offgray-700;
-  }
-
-  .card__icon-img {
-    height: 2rem;
-    width: 2rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .card__icon-img {
-      @apply invert;
-    }
-  }
-
-  .card__content {
-    min-width: 0;
-    flex: 1;
-  }
-
-  .card__tags {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .card__arrow {
-    display: none;
-    flex-shrink: 0;
-    align-self: center;
-    transition: color 0.15s;
-  }
-
-  .card:hover .card__arrow {
-    @apply text-accent-blue;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .card__arrow {
-      @apply text-offgray-600;
-    }
-    .card:hover .card__arrow {
-      @apply text-accent-blue-300;
-    }
-  }
-
-  @media (min-width: 640px) {
-    .card__arrow {
-      display: block;
-    }
+  .project-list {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 0 1rem;
   }
 </style>

@@ -1,8 +1,8 @@
 ---
 title: 给笔记本电脑配置 Fedora
-description: 最后还是装了双系统
-date: 2025-4-11
-category: Tips
+description: 最后还是回到了 WSL
+date: 2025-04-11
+tags: [Tips]
 ---
 
 # 换源

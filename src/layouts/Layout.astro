@@ -1,32 +1,85 @@
 ---
-import "../styles/global.css";
-
-interface Props {
-  title: string;
-}
+import Header from "./components/Header.astro";
+import Footer from "./components/Footer.astro";
 
 const { title } = Astro.props;
 ---
 
-<!doctype html>
-<html lang="zh">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title}</title>
-  </head>
-  <body>
-    <slot />
-  </body>
-</html>
+<html lang="zh_CN">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="viewport" content="width=device-width" />
+        <title>{title}</title>
+    </head>
+    <body>
+        <div class="container">
+            <Header />
+            <div class="content">
+                <slot />
+            </div>
+        </div>
+        <Footer />
+    </body>
 
-<style is:global>
-  .main {
-    position: relative;
-    isolation: isolate;
-    overflow: clip;
-    width: 100%;
-    height: 100%;
-  }
-</style>
+    <style>
+        body {
+            margin: 0;
+
+            background-color: var(--background-color);
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.35' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.075'/%3E%3C/svg%3E");
+            background-size: 200px 200px;
+            background-repeat: repeat;
+
+            color: var(--text-color);
+            font-family:
+                Noto Serif,
+                Noto Serif SC,
+                SimSun,
+                serif;
+        }
+
+        :root {
+            --page-padding: calc(48px + 2vw);
+            --background-color: oklch(98% 0.005 20);
+            --primary-color: lab(36.3314% 31.1715 -81.0014);
+            --shadow-color: Gainsboro;
+            --text-color: black;
+            --label-color: grey;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --background-color: #1a1b1c;
+                --primary-color: RoyalBlue;
+                --shadow-color: #333;
+                --text-color: #e5e5e5;
+                --label-color: #888;
+            }
+            body {
+                background-color: #161616;
+                background-image: unset;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            :root {
+                --page-padding: calc(96px + 7vw);
+            }
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding-inline: var(--page-padding);
+        }
+    </style>
+</html>

@@ -1,40 +1,75 @@
 ---
-import Card from "./Card.astro";
-
 interface Props {
-  title: string;
-  description: string;
-  date: string;
-  slug: string;
-  category?: string;
+    article: {
+        title: string;
+        description: string;
+        date: Date;
+        tags: string[];
+    };
+    link: string;
 }
-const { title, description, date, slug, category } = Astro.props;
+const { article, link } = Astro.props;
+const { title, description, date, tags } = article;
 ---
 
-<Card href={"/articles/" + slug}>
-  {category && <span class="card__tag">{category}</span>}
-  <h2 class="card__title">{title}</h2>
-  <p class="card__desc">{description}</p>
-  <div class="card__footer">
-    <time class="card__date">{date}</time>
-  </div>
-</Card>
+<a href={link} class="card">
+    <div style="line-height:0;">
+        {tags.map((t) => <span class="tag">{t}</span>)}
+    </div>
+    <h2 class="title">{title}</h2>
+    <p class="description">{description}</p>
+    <time class="date">{date.toLocaleDateString()}</time>
+</a>
 
 <style>
-  .card__desc {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
+    .card {
+        display: flex;
+        width: 100%;
+        max-width: 48rem;
+        margin-inline: auto;
+        flex-direction: column;
+        padding: 0.75rem;
+        border: 1px solid var(--shadow-color);
+        border-radius: 4px;
+        text-decoration: none;
+        color: inherit;
+        transition: border-color 0.15s;
+        background-color: var(--background-color);
+        box-shadow: inset 0 -2px 0 0 var(--shadow-color);
+    }
 
-  .card__footer {
-    margin-top: auto;
-    display: flex;
-    padding-top: 0.5rem;
-  }
+    .card:hover {
+        border-color: var(--primary-color);
+    }
 
-  .card__date {
-    @apply ml-auto font-mono text-[0.625rem] text-offgray-600 dark:text-offgray-500;
-  }
+    .tag {
+        display: inline-block;
+        padding: 0 4px;
+        margin-right: 4px;
+        border: 1px solid var(--shadow-color);
+        border-radius: 2px;
+        font: 0.625rem sans;
+        color: var(--label-color);
+    }
+
+    .title {
+        margin: 0.25rem 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+    .description {
+        margin: 0 0 0.25rem;
+        font-size: 0.9rem;
+        color: var(--label-color);
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .date {
+        font: 0.625rem sans;
+        color: var(--label-color);
+        text-align: right;
+    }
 </style>

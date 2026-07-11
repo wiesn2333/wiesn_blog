@@ -1,67 +1,76 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
-import SnsLinks from "../components/SnsLinks.astro";
+import Twitter from "../assets/twitter-x.svg";
+import Github from "../assets/github.svg";
+import BiliBili from "../assets/bilibili.svg";
 ---
 
-<Layout title="About — Wiesn's bookshelf">
-  <Header />
-  <main class="main">
+<Layout title="关于维森 — Wiesn's Bookshelf">
     <Hero title="关于维森" description="一个在键盘和书本之间迷路的人" />
 
-    <section class="section">
-      <div class="section__inner">
-        <div class="card">
-          <p class="card__text">废物大学生，啥都不会，一事无成</p>
-          <p class="card__emoji">😭</p>
-          <div class="card__sns">
-            <SnsLinks />
-          </div>
+    <div class="card">
+        <p>废物大学生，啥都不会，一事无成</p>
+        <p class="emoji">😭</p>
+        <div class="links">
+            <a href="https://twitter.com/weisn2333" aria-label="Twitter">
+                <img src={Twitter.src} />
+            </a>
+            <a href="https://github.com/wiesn2333" aria-label="GitHub">
+                <img src={Github.src} />
+            </a>
+            <a
+                href="https://space.bilibili.com/37298661/"
+                aria-label="Bilibili"
+            >
+                <img src={BiliBili.src} />
+            </a>
         </div>
-      </div>
-    </section>
-  </main>
+    </div>
 </Layout>
 
 <style>
-  .section {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-bottom: 3rem;
-  }
-
-  @media (min-width: 1024px) {
-    .section {
-      padding-bottom: 4rem;
-    }
-  }
-
-  .section__inner {
-    @apply mx-auto max-w-lg px-4;
-  }
-
-  .card {
-    @apply rounded-sm border p-8 bg-cream-50/60 dark:bg-offgray-900;
-    @apply border-offgray-200/60 dark:border-gray-500/30;
-    box-shadow: hsl(218, 13%, 50%, 0.05) 0 -2px 0 0 inset;
-  }
-
-  @media (prefers-color-scheme: dark) {
     .card {
-      box-shadow: hsl(218, 13%, 40%, 0.05) 0 -2px 0 0 inset;
+
+        max-width: 64rem;
+        margin: 15vh auto 0;
+        padding: 2rem;
+        border: 1px solid var(--shadow-color);
+        border-radius: 4px;
+        background: var(--background-color);
+        box-shadow: inset 0 -2px 0 0 var(--shadow-color);
+        text-align: center;
     }
-  }
-
-  .card__text {
-    @apply text-center tracking-tight text-offgray-600 dark:text-offgray-400;
-  }
-
-  .card__emoji {
-    @apply mt-4 text-center text-lg text-offgray-400 dark:text-offgray-500;
-  }
-
-  .card__sns {
-    @apply mt-6 flex justify-center;
-  }
+    .card p {
+        margin: 0;
+        color: var(--label-color);
+    }
+    .emoji {
+        margin-top: 1rem;
+        font-size: 1.25rem;
+    }
+    .links {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+        line-height: 0;
+    }
+    .links a {
+        padding: 0.5rem;
+        border-radius: 4px;
+        transition: background-color 0.15s;
+    }
+    .links a:hover {
+        background: var(--shadow-color);
+    }
+    .links img {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+    @media (prefers-color-scheme: dark) {
+        .links img {
+            filter: invert(1);
+        }
+    }
 </style>
